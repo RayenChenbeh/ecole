@@ -64,6 +64,7 @@ const sidebarStyle = (theme) => ({
     position: "relative",
     padding: "15px 15px",
     zIndex: "4",
+    height:"70px",
     "&:after": {
       content: '""',
       position: "absolute",
@@ -94,18 +95,15 @@ const sidebarStyle = (theme) => ({
     textAlign: "right",
   },
   logoImage: {
-    width: "30px",
-    display: "inline-block",
-    maxHeight: "30px",
-    marginLeft: "10px",
-    marginRight: "15px",
+    display:"flex",
+    justifyContent: "center"
   },
   img: {
-    width: "35px",
-    top: "22px",
+    height:"60px",
     position: "absolute",
     verticalAlign: "middle",
     border: "0",
+    top:"5px"
   },
   background: {
     position: "absolute",

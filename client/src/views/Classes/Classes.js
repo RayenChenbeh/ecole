@@ -12,8 +12,17 @@ import CardBody from "../../components/Card/CardBody.js";
 import AddIcon from '@material-ui/icons/Add';
 import Tooltip from '@material-ui/core/Tooltip';
 import Fab from '@material-ui/core/Fab';
-import Axios from "axios"
-
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import './Classes.css'
 
 const styles = {
   cardCategoryWhite: {
@@ -48,9 +57,36 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 
+
 export default function TableList() {
   const [nosClasses, setNosClasses]=useState([])
-    const [isLoaded, setIsLoaded]= useState(false)
+  const [isLoaded, setIsLoaded]= useState(false)
+
+  const [open, setOpen] = React.useState(false);
+
+  const [niveau, setNiveau] = React.useState();
+  const [nombre, setNombre] = useState()
+  const [nom, setNom] = useState()
+  const [annee, setAnnee]  = useState()
+  const [msg, setMsg] = useState("")
+
+  const handleChange = (event) => {
+    setNiveau(event.target.value);
+  };
+
+  const handleClickOpen = () => {
+      setOpen(true);
+ };
+
+ const handleClose = () => {
+      setNombre()
+      setAnnee()
+      setNiveau()
+      setMsg()
+      setNom()
+      setOpen(false);
+  };
+  
 
     useEffect(()=>{
     if(!isLoaded){
@@ -66,7 +102,27 @@ export default function TableList() {
     })
   }},[nosClasses])
 
+  const handleAdd = () =>{
+    if (!nom || !nombre || !annee || !niveau){
+      setMsg("Vous devez remplir tous les champs")}
+    else{
+      setMsg("")
+    fetch(`http://localhost:4000/classes`,{
+      method: 'POST',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+        },
+      
+      body: JSON.stringify({nom:nom, niveau: niveau, nb_eleve: nombre, année:annee}),
+    withCredentials: true,
+    })
+      .then(()=> {
+        window.location.reload()
+    })
+
+  }
   
+}
 
   const classes = useStyles();
   return (
@@ -89,11 +145,85 @@ export default function TableList() {
         </Card>
       </GridItem>
       </GridContainer>
-      <Tooltip title="Add" aria-label="add">
+      <Tooltip title="Ajouter" aria-label="Ajouter"  onClick={handleClickOpen}>
       <Fab color="secondary" className={classes.absolute} style={{float:"right", backgroundColor:"#8e24aa"}}>
-        <AddIcon />
+        <AddIcon/>
       </Fab>
     </Tooltip>
+    <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Nouvelle classe</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Donnez les informations suivantes pour ajouter une nouvelle classe
+          </DialogContentText>
+          <FormControl required className={classes.formControl} style={{width:"20%", margin:"3%"}}>
+
+          <InputLabel id="demo-simple-select-label">Niveau</InputLabel>
+          <Select
+          native
+          value={niveau}
+          onChange={handleChange}
+          name="niveau"
+          inputProps={{
+            id: 'niveau-native-required',
+          }}
+        >
+          <option aria-label="None" value="" />
+          <option value={1}>1</option>
+          <option value={2}>2</option>
+          <option value={3}>3</option>
+        </Select>
+        </FormControl>
+        
+        <TextField
+            value={nombre}
+            margin="dense"
+            id="filled-error"
+            label="Nombre des élèves"
+            required
+            fullWidth
+            onChange={(e)=>setNombre(e.target.value)}
+            style={{width:"30%", margin:"3%"}}
+          />
+
+          <TextField
+            required
+            value={annee}
+            margin="dense"
+            id="nombre"
+            label="Année scolaire"
+            fullWidth
+            onChange={(e)=>setAnnee(e.target.value)}
+            style={{width:"30%", margin:"3%"}}
+          />
+
+          <TextField
+            required
+            value={nom}
+            margin="dense"
+            id="name"
+            label="Nom de la classe"
+            fullWidth
+            style={{width:"40%" , margin:"3%"}}
+            onChange={(e)=>setNom(e.target.value)}
+         />
+
+          
+        </DialogContent>
+        <div>
+        <div className="msg">{msg}</div>
+
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Annuler
+          </Button>
+          <Button onClick={handleAdd} color="primary">
+            Enregistrer
+          </Button>
+        </DialogActions>
+
+        </div>
+      </Dialog>
     </div>
 
      )
