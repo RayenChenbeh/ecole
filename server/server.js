@@ -23,6 +23,10 @@ mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true }).then((
 
 
 app.use("/classes",require("./router/classes"))
+app.post("/update",require("./router/Administrateur"))
+
+
+
 
 
 const port = 4000 || process.env.PORT
