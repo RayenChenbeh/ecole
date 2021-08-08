@@ -1,21 +1,20 @@
 {
   "Header": {
-    "title": "We are a Landing Page",
-    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum."
+    "title": "Bienvenue à l'école",
+    "paragraph": "                          L’excellence que nous visons est au-delà de la réussite scolaire                 "
   },
   "About": {
-    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "Why": [
-      "Lorem ipsum dolor",
-      "Tempor incididunt",
-      "Lorem ipsum dolor",
+    "paragraph": "Depuis 1994, notre établissement s’est fixé comme objectif d’accueillir chaque élève, de le conduire à l’obtention du diplôme visé mais aussi et surtout, de lui offrir la formation humaine la plus globale pour l’épanouissement de toute sa personne.Elle offre un cursus trilingue et pluridisciplinaire ancré dans les meilleures traditions pédagogiques françaises et tunisiennes. Nous vous  proposons un encadrement à la fois rigoureux et  bienveillant, propice aux études et à l’épanouissement personnel de l’enfant.",
+    "Why2": [
+      "Études encadrées.",
+      "Accueil et soutien des nouveaux élèves.",
+      "Entretiens et aide personnalisée.",
       "Incididunt ut labore"
     ],
-    "Why2": [
-      "Aliquip ex ea commodo",
-      "Lorem ipsum dolor",
-      "Exercitation ullamco",
-      "Lorem ipsum dolor"
+    "Why": [
+      "Contacts réguliers avec les familles et les familles d'accueil pour les internes.",
+      "Différentes formules d'accueil : internat, demi-pension, externat.",
+      "Cours de vacances."
     ]
   },
   "Services": [

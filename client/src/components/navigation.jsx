@@ -15,9 +15,7 @@ export const Navigation = (props) => {
             <span className='icon-bar'></span>{' '}
             <span className='icon-bar'></span>{' '}
           </button>
-          <a className='navbar-brand page-scroll' href='#page-top'>
-            React Landing Page
-          </a>{' '}
+          <img src={process.env.PUBLIC_URL + '/img/e5.png'} alt="logo" width="175" height="60" />
         </div>
 
         <div
@@ -25,11 +23,6 @@ export const Navigation = (props) => {
           id='bs-example-navbar-collapse-1'
         >
           <ul className='nav navbar-nav navbar-right'>
-            <li>
-              <a href='#features' className='page-scroll'>
-                Features
-              </a>
-            </li>
             <li>
               <a href='#about' className='page-scroll'>
                 About
